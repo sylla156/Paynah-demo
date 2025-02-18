@@ -10,12 +10,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { useLanguage } from "../contexts/LanguageContext";
-import { PasswordInput } from "../components/PasswordInput";
-import { useAuth } from "../contexts/AuthContext";
-import { useAlert } from "../contexts/AlertContext";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { PasswordInput } from "../../components/PasswordInput";
+import { useAuth } from "../../contexts/AuthContext";
+import { useAlert } from "../../contexts/AlertContext";
 import { useRouter } from "next/navigation";
-import { useLoader } from "../contexts/LoaderContext";
+import { useLoader } from "../../contexts/LoaderContext";
 
 export function LoginModal() {
   const [loading, setLoading] = useState(false);

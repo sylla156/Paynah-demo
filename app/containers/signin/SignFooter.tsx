@@ -1,7 +1,7 @@
 import React from "react";
-import LanguageSelector from "../components/LanguageSelector";
+import LanguageSelector from "../../components/LanguageSelector";
 import Link from "next/link";
-import { useLanguage } from "../contexts/LanguageContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const SignFooter = () => {
   const { t } = useLanguage();

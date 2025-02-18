@@ -4,12 +4,12 @@ import React, { useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { useLoader } from "../contexts/LoaderContext";
-import { DashboardHeader } from "./DashboardHeader";
-import { AccountCard } from "./AccountCard";
-import { QuickActions } from "./QuickActions";
-import { RecentTransactions } from "./RecentTransactions";
-import { PointsOfSale } from "./PointsOfSale";
-import { NavigationBar } from "./NavigationBar";
+import { DashboardHeader } from "../containers/dashboard/DashboardHeader";
+import { AccountCard } from "../containers/dashboard/AccountCard";
+import { QuickActions } from "../containers/dashboard/QuickActions";
+import { RecentTransactions } from "../containers/dashboard/RecentTransactions";
+import { PointsOfSale } from "../containers/dashboard/PointsOfSale";
+import { NavigationBar } from "../containers/dashboard/NavigationBar";
 
 const Dashbaord = () => {
   const { user } = useAuth();

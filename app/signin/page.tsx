@@ -1,7 +1,7 @@
 "use client";
-import SignFooter from "./SignFooter";
-import LoginModal from "./LoginModal";
-import SignHeader from "./SignHeader";
+import SignFooter from "../containers/signin/SignFooter";
+import LoginModal from "../containers/signin/LoginModal";
+import SignHeader from "../containers/signin/SignHeader";
 import { useLoader } from "../contexts/LoaderContext";
 import { useAuth } from "../contexts/AuthContext";
 import { useEffect } from "react";

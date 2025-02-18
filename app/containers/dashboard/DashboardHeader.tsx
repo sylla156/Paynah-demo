@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { CompanySelector } from "../components/CompanySelector";
-import { BalanceDisplay } from "./balanceDisplay";
+import { CompanySelector } from "../../components/CompanySelector";
+import { BalanceDisplay } from "../../components/balanceDisplay";
 
 export function DashboardHeader() {
   return (
