@@ -36,7 +36,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             "placeholder:text-[#626262]",
             "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:bg-[#ECECEC]",
             "transition-colors duration-200",
-            error && "border-red-500",
+            error && "border-2 border-[#E95D5D]",
             className
           )}
           ref={ref}

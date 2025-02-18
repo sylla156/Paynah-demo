@@ -19,6 +19,7 @@ export function LoginModal() {
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
     {}
   );
+  const [authError, setAuthError] = useState(false);
 
   const loginSchema = z.object({
     email: z.string().min(1, t("emailRequired")).email(t("emailInvalid")),
@@ -35,7 +36,7 @@ export function LoginModal() {
     handleSubmit,
     formState: { errors, isValid },
     trigger,
-    watch,
+    reset,
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     mode: "onChange",
@@ -47,6 +48,8 @@ export function LoginModal() {
       // Add your API call here
       console.log(data);
       await new Promise((resolve) => setTimeout(resolve, 2000));
+      reset({ ...data, password: "" });
+      setAuthError(true);
     } catch (error) {
       console.error(error);
     } finally {
@@ -84,6 +87,11 @@ export function LoginModal() {
               height={12}
             />
           </div>
+          {authError && (
+            <div className="text-[#E00000] text-sm text-center font-medium">
+              {t("invalidCredentials")}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-4">
@@ -91,13 +99,18 @@ export function LoginModal() {
                 <Input
                   {...register("email")}
                   placeholder={t("emailPlaceholder")}
-                  className="h-12 bg-[#F5F5F5] border-0 rounded-xl px-4 placeholder:text-[#626262] focus-visible:ring-0 focus-visible:ring-offset-0"
+                  className={cn(
+                    "h-12 bg-[#F5F5F5] border-0 rounded-xl px-4 placeholder:text-[#626262] focus-visible:ring-0 focus-visible:ring-offset-0",
+                    touchedFields.email &&
+                      errors.email &&
+                      "border-2 border-[#E95D5D]"
+                  )}
                   aria-invalid={errors.email ? "true" : "false"}
                   onBlur={() => handleBlur("email")}
                   disabled={loading}
                 />
                 {touchedFields.email && errors.email && (
-                  <p className="mt-1 text-sm text-red-500">
+                  <p className="mt-1 text-sm text-[#E00000]">
                     {errors.email.message}
                   </p>
                 )}
@@ -107,12 +120,17 @@ export function LoginModal() {
                 <PasswordInput
                   {...register("password")}
                   placeholder={t("passwordPlaceholder")}
+                  className={cn(
+                    touchedFields.password &&
+                      errors.password &&
+                      "border-2 border-[#E95D5D]"
+                  )}
                   aria-invalid={errors.password ? "true" : "false"}
                   onBlur={() => handleBlur("password")}
                   disabled={loading}
                 />
                 {touchedFields.password && errors.password && (
-                  <p className="mt-1 text-sm text-red-500">
+                  <p className="mt-1 text-sm text-[#E00000]">
                     {errors.password.message}
                   </p>
                 )}

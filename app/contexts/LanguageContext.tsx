@@ -31,6 +31,7 @@ const translations: TranslationsType = {
     submitButtonText: "Unlock",
     loadingText: "Loading...",
     openAccountText: "Open my account",
+    invalidCredentials: "Invalid email or password, please try again!",
     // Zod error messages
     emailRequired: "📧 Please provide your email!",
     emailInvalid: "🚫 Oops! That's not a valid email.",
@@ -48,6 +49,7 @@ const translations: TranslationsType = {
     submitButtonText: "Deverrouiller",
     loadingText: "Chargement...",
     openAccountText: "Ouvrir mon compte",
+    invalidCredentials: "Identifiant ou clé d'accès incorrect, réessayez !",
     // Zod error messages
     emailRequired: "📧 Veuillez renseigner votre email!",
     emailInvalid: "🚫 Oops! Ce n'est pas un email valide.",
