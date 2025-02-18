@@ -31,6 +31,12 @@ const translations: TranslationsType = {
     submitButtonText: "Unlock",
     loadingText: "Loading...",
     openAccountText: "Open my account",
+    // Zod error messages
+    emailRequired: "📧 Please provide your email!",
+    emailInvalid: "🚫 Oops! That's not a valid email.",
+    passwordRequired: "🔒 Password, please!",
+    passwordMinLength:
+      "🔑 Password should be at least {length} characters long!",
   },
   fr: {
     copyRightFirst: "Copyright © 2023 Paynah. Tous droits réservés",
@@ -42,6 +48,12 @@ const translations: TranslationsType = {
     submitButtonText: "Deverrouiller",
     loadingText: "Chargement...",
     openAccountText: "Ouvrir mon compte",
+    // Zod error messages
+    emailRequired: "📧 Veuillez renseigner votre email!",
+    emailInvalid: "🚫 Oops! Ce n'est pas un email valide.",
+    passwordRequired: "🔒 Veuillez renseigner votre mot de passe!",
+    passwordMinLength:
+      "🔑 Votre mot de passe doit contenir au moins {length} caractères!",
   },
 };
 

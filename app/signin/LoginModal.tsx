@@ -13,21 +13,22 @@ import { cn } from "@/lib/utils";
 import { useLanguage } from "../contexts/LanguageContext";
 import { PasswordInput } from "../components/PasswordInput";
 
-const loginSchema = z.object({
-  email: z.string().min(1, "Email is required").email("Invalid email address"),
-  password: z
-    .string()
-    .min(1, "Password is required")
-    .min(8, "Password must be at least 8 characters"),
-});
-type LoginFormValues = z.infer<typeof loginSchema>;
-
 export function LoginModal() {
   const [loading, setLoading] = useState(false);
+  const { t } = useLanguage();
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
     {}
   );
-  const { t } = useLanguage();
+
+  const loginSchema = z.object({
+    email: z.string().min(1, t("emailRequired")).email(t("emailInvalid")),
+    password: z
+      .string()
+      .min(1, t("passwordRequired"))
+      .min(8, t("passwordMinLength", { length: "8" })),
+  });
+
+  type LoginFormValues = z.infer<typeof loginSchema>;
 
   const {
     register,
@@ -58,7 +59,6 @@ export function LoginModal() {
     trigger(fieldName);
   };
 
-
   // Effect to trigger validation on change, but only if the field has been touched
   useEffect(() => {
     Object.keys(touchedFields).forEach((field) => {
@@ -66,7 +66,7 @@ export function LoginModal() {
         trigger(field as keyof LoginFormValues);
       }
     });
-  }, [touchedFields, trigger]); // Removed unnecessary watchFields dependency
+  }, [touchedFields, trigger, t]); // Removed unnecessary watchFields dependency
 
   return (
     <div className="w-full max-w-[31rem]">
@@ -94,6 +94,7 @@ export function LoginModal() {
                   className="h-12 bg-[#F5F5F5] border-0 rounded-xl px-4 placeholder:text-[#626262] focus-visible:ring-0 focus-visible:ring-offset-0"
                   aria-invalid={errors.email ? "true" : "false"}
                   onBlur={() => handleBlur("email")}
+                  disabled={loading}
                 />
                 {touchedFields.email && errors.email && (
                   <p className="mt-1 text-sm text-red-500">
@@ -108,6 +109,7 @@ export function LoginModal() {
                   placeholder={t("passwordPlaceholder")}
                   aria-invalid={errors.password ? "true" : "false"}
                   onBlur={() => handleBlur("password")}
+                  disabled={loading}
                 />
                 {touchedFields.password && errors.password && (
                   <p className="mt-1 text-sm text-red-500">
