@@ -1,21 +1,72 @@
-import React, { useState } from "react";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
-import Link from "next/link";
-import { PasswordInput } from "../components/PasswordInput";
+import { cn } from "@/lib/utils";
 import { useLanguage } from "../contexts/LanguageContext";
+import { PasswordInput } from "../components/PasswordInput";
 
-const LoginModal = () => {
+const loginSchema = z.object({
+  email: z.string().min(1, "Email is required").email("Invalid email address"),
+  password: z
+    .string()
+    .min(1, "Password is required")
+    .min(8, "Password must be at least 8 characters"),
+});
+type LoginFormValues = z.infer<typeof loginSchema>;
+
+export function LoginModal() {
   const [loading, setLoading] = useState(false);
+  const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
+    {}
+  );
   const { t } = useLanguage();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setTimeout(() => setLoading(false), 2000);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    trigger,
+    watch,
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    mode: "onChange",
+  });
+
+  const onSubmit = async (data: LoginFormValues) => {
+    try {
+      setLoading(true);
+      // Add your API call here
+      console.log(data);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const handleBlur = (fieldName: keyof LoginFormValues) => {
+    setTouchedFields((prev) => ({ ...prev, [fieldName]: true }));
+    trigger(fieldName);
+  };
+
+
+  // Effect to trigger validation on change, but only if the field has been touched
+  useEffect(() => {
+    Object.keys(touchedFields).forEach((field) => {
+      if (touchedFields[field]) {
+        trigger(field as keyof LoginFormValues);
+      }
+    });
+  }, [touchedFields, trigger]); // Removed unnecessary watchFields dependency
 
   return (
     <div className="w-full max-w-[31rem]">
@@ -34,22 +85,39 @@ const LoginModal = () => {
             />
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-4">
-              <Input
-                placeholder={t("emailPlaceholder")}
-                required
-                className="h-12 bg-[#F5F5F5] border-0 rounded-xl px-4 placeholder:text-[#626262] focus-visible:ring-0 focus-visible:ring-offset-0"
-              />
+              <div>
+                <Input
+                  {...register("email")}
+                  placeholder={t("emailPlaceholder")}
+                  className="h-12 bg-[#F5F5F5] border-0 rounded-xl px-4 placeholder:text-[#626262] focus-visible:ring-0 focus-visible:ring-offset-0"
+                  aria-invalid={errors.email ? "true" : "false"}
+                  onBlur={() => handleBlur("email")}
+                />
+                {touchedFields.email && errors.email && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+
               <div>
                 <PasswordInput
-                  required
+                  {...register("password")}
                   placeholder={t("passwordPlaceholder")}
+                  aria-invalid={errors.password ? "true" : "false"}
+                  onBlur={() => handleBlur("password")}
                 />
+                {touchedFields.password && errors.password && (
+                  <p className="mt-1 text-sm text-red-500">
+                    {errors.password.message}
+                  </p>
+                )}
                 <div className="mt-1">
                   <Link
                     href="#"
-                    className="text-sm text-[#000] hover:underline animate-spin"
+                    className="text-sm text-[#000] hover:underline"
                   >
                     {t("resetPasswordText")}
                   </Link>
@@ -58,9 +126,12 @@ const LoginModal = () => {
             </div>
 
             <Button
-              className="w-full h-12 bg-[#9D9D9D] rounded-full font-normal"
+              className={cn("w-full h-12 rounded-full font-normal", {
+                "bg-[#000]": isValid && !loading,
+                "bg-[#9D9D9D]": !isValid || loading,
+              })}
               type="submit"
-              disabled={true}
+              disabled={!isValid || loading}
             >
               {loading ? t("loadingText") : t("submitButtonText")}
             </Button>
@@ -78,6 +149,6 @@ const LoginModal = () => {
       </div>
     </div>
   );
-};
+}
 
 export default LoginModal;
