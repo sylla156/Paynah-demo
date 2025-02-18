@@ -17,6 +17,11 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-poppins)", "sans-serif"],
+        heading: ["var(--font-poppins)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,11 +58,20 @@ module.exports = {
         },
       },
       borderRadius: {
+        xlg: "calc(var(--radius) * 2.5)",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontSize: {
+        "2xl": [
+          "2rem",
+          {
+            lineHeight: "2rem",
+          },
+        ],
+        sm: "calc(var(--font) - 3px)",
+      },
     },
   },
-}
-
+};

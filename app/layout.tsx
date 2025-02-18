@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { AlertProvider } from "./contexts/AlertContext";
 import type React from "react";
 
-const montserrat = Montserrat({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-montserrat",
-});
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+})
 
 export const metadata: Metadata = {
   title: "Paynah",
@@ -23,13 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={montserrat.variable}>
+    <html lang="fr" className={poppins.variable}>
       <body className="font-sans">
         <AuthProvider>
           <LanguageProvider>
-            <AlertProvider>
-              <main className="container mx-auto px-4 py-8">{children}</main>
-            </AlertProvider>
+            <AlertProvider>{children}</AlertProvider>
           </LanguageProvider>
         </AuthProvider>
       </body>
