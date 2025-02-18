@@ -1,9 +1,24 @@
-import React from 'react'
+"use client";
+
+import React, { useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useRouter } from "next/navigation";
+import { useLoader } from "../contexts/LoaderContext";
 
 const Dashbaord = () => {
-  return (
-    <div>pages</div>
-  )
-}
+  const { user } = useAuth();
+  const { setIsLoading } = useLoader();
+  const router = useRouter();
 
-export default Dashbaord
+  useEffect(() => {
+    if (!user) {
+      router.push("/signin");
+    } else {
+      setIsLoading(false);
+    }
+  }, [user, router]);
+
+  return <div>pages</div>;
+};
+
+export default Dashbaord;

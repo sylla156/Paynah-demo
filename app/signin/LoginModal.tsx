@@ -15,12 +15,14 @@ import { PasswordInput } from "../components/PasswordInput";
 import { useAuth } from "../contexts/AuthContext";
 import { useAlert } from "../contexts/AlertContext";
 import { useRouter } from "next/navigation";
+import { useLoader } from "../contexts/LoaderContext";
 
 export function LoginModal() {
   const [loading, setLoading] = useState(false);
   const { t } = useLanguage();
   const { signIn } = useAuth();
   const { showAlert } = useAlert();
+  const { setIsLoading } = useLoader();
   const router = useRouter();
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
     {}
@@ -67,8 +69,10 @@ export function LoginModal() {
 
       signIn(data.user);
       router.push("/dashbaord");
+      setIsLoading(true);
     } catch (error) {
       showAlert((error as Error).message, "error", 5000);
+      setAuthError(true);
     } finally {
       setLoading(false);
     }
