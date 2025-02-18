@@ -12,10 +12,16 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "../contexts/LanguageContext";
 import { PasswordInput } from "../components/PasswordInput";
+import { useAuth } from "../contexts/AuthContext";
+import { useAlert } from "../contexts/AlertContext";
+import { useRouter } from "next/navigation";
 
 export function LoginModal() {
   const [loading, setLoading] = useState(false);
   const { t } = useLanguage();
+  const { signIn } = useAuth();
+  const { showAlert } = useAlert();
+  const router = useRouter();
   const [touchedFields, setTouchedFields] = useState<Record<string, boolean>>(
     {}
   );
@@ -36,22 +42,33 @@ export function LoginModal() {
     handleSubmit,
     formState: { errors, isValid },
     trigger,
-    reset,
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     mode: "onChange",
   });
 
-  const onSubmit = async (data: LoginFormValues) => {
+  const onSubmit = async (formData: LoginFormValues) => {
+    setLoading(true);
+
     try {
-      setLoading(true);
-      // Add your API call here
-      console.log(data);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      reset({ ...data, password: "" });
-      setAuthError(true);
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...formData }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "An error occurred during sign-in");
+      }
+
+      signIn(data.user);
+      router.push("/dashbaord");
     } catch (error) {
-      console.error(error);
+      showAlert((error as Error).message, "error", 5000);
     } finally {
       setLoading(false);
     }

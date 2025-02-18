@@ -15,7 +15,7 @@ export async function getUserByEmail(email: string): Promise<IUser | null> {
 
 export async function updateUser(id: string, userData: Partial<IUser>): Promise<IUser | null> {
   if (userData.password) {
-    userData.password = await bcrypt.hash(userData.password, 10)
+    userData.password = await bcrypt.hash(userData.password, 12)
   }
   return User.findByIdAndUpdate(id, userData, { new: true }).lean()
 }
