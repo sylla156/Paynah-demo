@@ -1,0 +1,14 @@
+app_root := $(shell pwd)
+export app_root
+
+# Docker Compose Configuration
+compose-config := infra/deploy/local/docker-compose.yml
+
+# Project and Service Names
+project-name := nextjs-app
+service-name := nextjs-app
+
+# Development Commands
+make_lint := npm run lint
+make_test := npm run test
+make_db := npm run db:migrate
