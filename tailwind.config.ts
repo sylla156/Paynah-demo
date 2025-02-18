@@ -72,6 +72,16 @@ module.exports = {
         ],
         sm: "calc(var(--font) - 3px)",
       },
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(-15deg)" },
+          "75%": { transform: "rotate(15deg)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 0.8s ease-in-out",
+      },
     },
   },
 };

@@ -7,6 +7,7 @@ import { AlertProvider } from "./contexts/AlertContext";
 import type React from "react";
 import { LoaderProvider } from "./contexts/LoaderContext";
 import { Loader } from "./components/Loader";
+import { CompanyProvider } from "./contexts/CompanyContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,12 +30,14 @@ export default function RootLayout({
       <body className="font-sans">
         <AuthProvider>
           <LanguageProvider>
-            <AlertProvider>
-              <LoaderProvider>
-                <Loader />
-                {children}
-              </LoaderProvider>
-            </AlertProvider>
+            <CompanyProvider>
+              <AlertProvider>
+                <LoaderProvider>
+                  <Loader />
+                  {children}
+                </LoaderProvider>
+              </AlertProvider>
+            </CompanyProvider>
           </LanguageProvider>
         </AuthProvider>
       </body>
