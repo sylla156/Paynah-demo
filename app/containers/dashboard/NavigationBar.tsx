@@ -1,51 +1,123 @@
-import { Grid, ArrowRightLeft, Link2, Wallet2, User2, Download, ArrowLeftRight, Settings, Users2 } from "lucide-react"
-import Image from "next/image"
+import {
+  NavigationButton,
+  NavigationItem,
+} from "@/app/components/NavigationButton";
+import { useModal } from "@/app/contexts/ModalContext";
+import {
+  Link2,
+  Download,
+  ArrowLeftRight,
+  Users2,
+  LayoutGrid,
+  Wallet,
+  RefreshCw,
+  MapPin,
+  Code2,
+  MessageCircle,
+  Settings,
+} from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { UserSettings } from "./userSettings";
+import { Button } from "@/components/ui/button";
 
 export function NavigationBar() {
+  const { openModal } = useModal();
+  const [activeId, setActiveId] = useState("transfer");
+  const navigationItems: NavigationItem[] = [
+    {
+      id: "apps",
+      icon: LayoutGrid,
+      label: "Applications",
+    },
+    {
+      id: "transfer",
+      icon: ArrowLeftRight,
+      label: "Transfert",
+      isActive: true,
+    },
+    {
+      id: "link",
+      icon: Link2,
+      label: "Liens",
+    },
+    {
+      id: "wallet",
+      icon: Wallet,
+      label: "Portefeuille",
+    },
+    {
+      id: "sync",
+      icon: RefreshCw,
+      label: "Synchroniser",
+    },
+    {
+      id: "location",
+      icon: MapPin,
+      label: "Localisation",
+    },
+    {
+      id: "download",
+      icon: Download,
+      label: "Télécharger",
+    },
+    {
+      id: "api",
+      icon: Code2,
+      label: "API",
+    },
+    {
+      id: "messages",
+      icon: MessageCircle,
+      label: "Messages",
+    },
+    {
+      id: "users",
+      icon: Users2,
+      label: "Utilisateurs",
+    },
+  ];
+
+  const handleSettingsClick = () => {
+    openModal(<UserSettings />);
+  };
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 border-t bg-white">
-      <div className="container flex h-16 items-center justify-between px-4">
+    <div className="container fixed bottom-10 left-0 right-0  bg-[#F8F9FB]">
+      <div className="flex h-16 items-center justify-between px-4 bg-white rounded-xl">
         <div className="flex items-center gap-2">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-18%20at%2020.34.56-eA5z38DQtGuZz6OZ6kwildzIIAF94U.png"
-            alt="Logo"
-            width={80}
-            height={24}
-            className="h-6 w-auto"
+            width={135}
+            height={48}
+            src={"/icons/logo.svg"}
+            alt="Paynah"
+            className="w-[5.5rem]"
           />
         </div>
-        <div className="flex items-center gap-6">
-          <button className="text-gray-500 hover:text-gray-900">
-            <Grid className="h-5 w-5" />
-          </button>
-          <button className="text-gray-500 hover:text-gray-900">
-            <ArrowRightLeft className="h-5 w-5" />
-          </button>
-          <button className="text-gray-500 hover:text-gray-900">
-            <Link2 className="h-5 w-5" />
-          </button>
-          <button className="text-gray-500 hover:text-gray-900">
-            <Wallet2 className="h-5 w-5" />
-          </button>
-          <button className="text-gray-500 hover:text-gray-900">
-            <User2 className="h-5 w-5" />
-          </button>
-          <button className="text-gray-500 hover:text-gray-900">
-            <Download className="h-5 w-5" />
-          </button>
-          <button className="text-gray-500 hover:text-gray-900">
-            <ArrowLeftRight className="h-5 w-5" />
-          </button>
-          <button className="text-gray-500 hover:text-gray-900">
-            <Settings className="h-5 w-5" />
-          </button>
-          <button className="text-gray-500 hover:text-gray-900">
-            <Users2 className="h-5 w-5" />
-          </button>
+        <div className="flex items-center gap-4">
+          {navigationItems.map((item) => (
+            <NavigationButton
+              key={item.id}
+              {...item}
+              isActive={item.id === activeId}
+              onClick={() => setActiveId(item.id)}
+            />
+          ))}
         </div>
-        <button className="rounded-full bg-black px-4 py-1 text-sm font-medium text-white">JV</button>
+        <div className="flex items-center gap-4">
+          <Button
+            onClick={handleSettingsClick}
+            className="rounded-full p-2 text-gray-500 hover:bg-gray-100"
+            variant={'ghost'}
+          >
+            <Settings className="h-5 w-5" />
+            <span className="sr-only">Settings</span>
+          </Button>
+          <Button className="h-12 w-12 rounded-xl bg-[#FFD7CC] px-4 py-1 text-sm font-medium text-[#FF6934] hover:bg-[#FFD7CC]/90 transition-colors">
+            JV
+          </Button>
+        </div>
       </div>
     </div>
-  )
+  );
 }
-

@@ -26,6 +26,10 @@
     --radius: 1rem;
     --font: 1rem;
   }
+
+  body {
+    background: #f8f9fb;
+  }
 }
 
 @layer utilities {

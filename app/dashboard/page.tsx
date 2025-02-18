@@ -25,7 +25,7 @@ const Dashbaord = () => {
   }, [user, router]);
 
   return (
-    <div className="min-h-screen bg-[#F8F9FB]">
+    <div style={{ minHeight: "calc(100dvh - 2rem)" }} className="bg-[#F8F9FB] pb-2">
       <DashboardHeader />
       {/* <main className="container px-4 py-6">
         <div className="grid gap-6 md:grid-cols-[2fr,1fr]">

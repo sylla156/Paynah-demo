@@ -8,6 +8,8 @@ import type React from "react";
 import { LoaderProvider } from "./contexts/LoaderContext";
 import { Loader } from "./components/Loader";
 import { CompanyProvider } from "./contexts/CompanyContext";
+import { Modal } from "./components/Modal";
+import { ModalProvider } from "./contexts/ModalContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,14 +32,17 @@ export default function RootLayout({
       <body className="font-sans">
         <AuthProvider>
           <LanguageProvider>
-            <CompanyProvider>
-              <AlertProvider>
-                <LoaderProvider>
-                  <Loader />
-                  {children}
-                </LoaderProvider>
-              </AlertProvider>
-            </CompanyProvider>
+            <ModalProvider>
+              <CompanyProvider>
+                <AlertProvider>
+                  <LoaderProvider>
+                    <Loader />
+                    <Modal />
+                    {children}
+                  </LoaderProvider>
+                </AlertProvider>
+              </CompanyProvider>
+            </ModalProvider>
           </LanguageProvider>
         </AuthProvider>
       </body>
