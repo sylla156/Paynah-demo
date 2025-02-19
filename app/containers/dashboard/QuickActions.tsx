@@ -26,7 +26,7 @@ export function QuickActions() {
               Envoi d’argent
             </TabsTrigger>
             <TabsTrigger style={{ fontSize: "0.6rem" }} value="envoi">
-              Lien de paiement
+              Paiement
             </TabsTrigger>
             <TabsTrigger style={{ fontSize: "0.6rem" }} value="paiement">
               Rechargement

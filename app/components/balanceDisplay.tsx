@@ -34,7 +34,7 @@ export function BalanceDisplay({
   return (
     <div className="">
       <div className="flex items-center gap-2">
-        <div className="text-sm text-[#909090]">Solde :</div>
+        <div className="text-sm text-[#909090] font-light">Solde :</div>
         <div className={`mt-${showBalance ? 0 : 2} font-medium`}>
           {showBalance ? balance : "***********"}
         </div>
@@ -57,7 +57,7 @@ export function BalanceDisplay({
         </button>
       </div>
       <div className="flex items-center gap-2">
-        <div className="text-sm text-[#909090]">Solde disponible :</div>
+        <div className="text-sm text-[#909090] font-light">Solde disponible :</div>
         <div className="mt-2 font-medium">
           {showAvailableBalance ? availableBalance : "***********"}
         </div>

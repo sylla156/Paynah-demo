@@ -8,7 +8,7 @@ export function AccountCard() {
         <div className="flex justify-between items-start">
           <div className="flex items-start gap-x-2">
             <div>
-              <div className="text-sm font-medium">Compte principal</div>
+              <div className="text-sm font-medium text-[#DBDBDB]">Compte principal</div>
               <div
                 className="text-xs text-[#AFAFAF]"
                 style={{ fontSize: "0.6rem" }}
@@ -24,7 +24,7 @@ export function AccountCard() {
               <span>▼</span>
             </div>
           </div>
-          <Lock color="white" className="h-3 w-3" />
+          <Lock className="h-3 w-3 text-[#ADADAD]" />
         </div>
         <div>
           <div
