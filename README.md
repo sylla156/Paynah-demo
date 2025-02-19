@@ -1,118 +1,229 @@
-**Project Title:** Hub2 Web Application
+# Paynah Web Application
 
-**Description:**
-Hub2 is a web application designed to provide a seamless user experience for managing transactions, payments, and refunds. Built with modern web technologies, it features a responsive design to ensure optimal usability across various devices.
+## Description
+Paynah is a modern financial management web application built with Next.js, offering features like transaction management, account monitoring, and payment processing. The application provides a sleek, responsive interface designed for optimal user experience across all devices.
 
-**Table of Contents:**
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Development Options](#development-options)
+- [Database Setup](#database-setup)
+- [Environment Variables](#environment-variables)
+- [Available Scripts](#available-scripts)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
 
-1. [Installation Instructions](#installation-instructions)
-2. [Usage](#usage)
-3. [Dependencies](#dependencies)
-4. [Configuration](#configuration)
-5. [Webhook Configuration](#webhook-configuration)
-6. [Contributing Guidelines](#contributing-guidelines)
-
-**Prerequisites:**
-
-- Docker
-- Docker Compose
+## Prerequisites
+- Node.js (v18 or higher)
+- Docker and Docker Compose (for containerized development)
+- MongoDB
 - Git
 
-**Installation Instructions:**
+## Installation
 
-1. Clone the repository: `git clone https://gitlab.com/ibrahim.sylla/hub2-web-app-demo.git`
-2. Enter the repository: `cd hub2-web-app`
-3. Copy the environment template: `cp infra/config/.env.dist .env`
-4. Edit the ⁠.env file with your specific configuration
-5. Start the application in development mode: `make run`
-6. Stop the running containers: `make stop`
-
-
-
-**Usage:**
-
-1. Open your web browser and navigate to the application's host and port (e.g., `http://localhost:3000`)
-2. Explore the application's features, including transaction management, payment processing, and refund handling
-
-**Dependencies:**
-- Docker
-- Docker Compose
-
-**Configuration:**
-The following environment variables are required:
-
-- `HOST`: The URL of the application (e.g., `http://localhost:3000`)
-- `MONGODB_URI`: The connection string for the MongoDB database
-- `HUB2_API_URL`: The URL of the Hub2 API
-- `HUB2_APIKEY`: The API key for the Hub2 API
-- `HUB2_MERCHANTID`: The merchant ID for the Hub2 API
-- `HUB2_ENVIRONMENT`: The environment for the Hub2 API (e.g., `sandbox` or `production`)
-- `HUB2_WEBHOOK_SECRET_KEY_TRANSFER`: The secret key for transfer webhooks
-- `HUB2_WEBHOOK_SECRET_KEY_PAYMENT`: The secret key for payment webhooks
-- `NEXT_PUBLIC_PUSHER_APP_ID`: The Pusher app ID
-- `NEXT_PUBLIC_PUSHER_KEY`: The Pusher key
-- `NEXT_PUBLIC_PUSHER_SECRET`: The Pusher secret
-- `NEXT_PUBLIC_PUSHER_CHANNEL`: The Pusher channel
-- `NEXT_PUBLIC_PUSHER_EVENT_TRANSFER`: The Pusher event for transfers
-- `NEXT_PUBLIC_PUSHER_EVENT_PAYMENT`: The Pusher event for payments
-- `NEXT_PUBLIC_PUSHER_CLUSTER`: The Pusher cluster
-
-Create a new file named `.env` in the project root and populate it with the required environment variables. For example:
-
+1. Clone the repository:
 ```bash
-HOST=http://localhost:3000
-MONGODB_URI=mongodb://localhost:27017/hub2
-HUB2_API_URL=https://api.hub2.com
-HUB2_APIKEY=your-api-key
-HUB2_MERCHANTID=your-merchant-id
-HUB2_ENVIRONMENT=sandbox
-HUB2_WEBHOOK_SECRET_KEY_TRANSFER=your-secret-key
-HUB2_WEBHOOK_SECRET_KEY_PAYMENT=your-secret-key
-NEXT_PUBLIC_PUSHER_APP_ID=your-app-id
-NEXT_PUBLIC_PUSHER_KEY=your-key
-NEXT_PUBLIC_PUSHER_SECRET=your-secret
-NEXT_PUBLIC_PUSHER_CHANNEL=your-channel
-NEXT_PUBLIC_PUSHER_EVENT_TRANSFER=transfer
-NEXT_PUBLIC_PUSHER_EVENT_PAYMENT=payment
-NEXT_PUBLIC_PUSHER_CLUSTER=your-cluster
+git clone https://github.com/sylla156/Paynah-demo.git
+cd Paynah-demo
 ```
 
-**Webhook Configuration:**
+2. Copy the environment template:
 
-To receive callbacks from the Hub2 API, you need to configure webhooks on the Hub2 API side. Follow these steps:
 
-1. Log in to your Hub2 API account and navigate to the Webhooks settings.
-2. Create two new webhooks using the [Hub2 documentation endpoint](https://docs.hub2.io/api-reference/webhooks/create-a-webhook):
-   - For transfers: `https://your-domain-name.com/api/callback/transfer` (replace `your-domain-name.com` with the domain name of your website)
-   - For payments: `https://your-domain-name.com/api/callback/payment` (replace `your-domain-name.com` with the domain name of your website)
-3. After creating the webhooks, obtain the secret keys for each webhook from the response. You will need these keys to verify the authenticity of incoming callbacks.
-
-**Environment Variables:**
-
-To store the secret keys, update your `.env` file with the following variables:
-
-- `HUB2_WEBHOOK_SECRET_KEY_TRANSFER`: The secret key for the transfer webhook
-- `HUB2_WEBHOOK_SECRET_KEY_PAYMENT`: The secret key for the payment webhook
-
-Example:
-
-```bash
-HUB2_WEBHOOK_SECRET_KEY_TRANSFER=your-transfer-secret-key
-HUB2_WEBHOOK_SECRET_KEY_PAYMENT=your-payment-secret-key
+```shellscript
+cp .env.example .env
 ```
 
-**Verification Process:**
+3. Configure your environment variables in the `.env` file
 
-When a callback is received, the endpoint will verify the signature of the request using the secret key. If the signature is valid, the endpoint will process the callback data. If the signature is invalid, the endpoint will reject the callback.
 
-By following these steps, you will be able to receive callbacks from Hub2 API and process them securely using the secret keys stored in your `.env` file.
+## Development Options
 
-**Contributing Guidelines:**
+### Option 1: Docker Development
 
-We welcome contributions to the Hub2 Web Application! If you'd like to submit an issue or pull request, please follow these guidelines:
+1. Start the application:
 
-1. Make your changes and commit them with a clear and concise commit message.
-2. Open a pull request and describe the changes you've made.
-3. Wait for review and feedback from the maintainers.
 
-If you have any questions or need help, feel free to ask!
+```shellscript
+make run
+```
+
+2. View logs:
+
+
+```shellscript
+make watch_logs
+```
+
+3. Stop the application:
+
+
+```shellscript
+make stop
+```
+
+### Option 2: Local Development
+
+1. Install dependencies:
+
+
+```shellscript
+npm install
+```
+
+2. Start the development server:
+
+
+```shellscript
+npm run dev
+```
+
+## Database Setup
+
+1. Connect to your MongoDB instance
+2. Create an admin user in the database:
+
+
+```javascript
+db.users.insertOne({
+  email: "admin@example.com",
+  password: "hashed_password", // Make sure to hash the password
+  role: "admin",
+  name: "Admin User"
+})
+```
+
+## Environment Variables
+
+Create a `.env` file in the project root with the following variables:
+
+```plaintext
+# Database
+MONGODB_URI=your_mongodb_connection_string
+
+# Authentication
+JWT_SECRET=your_jwt_secret
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# API Configuration
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+
+# Other Configuration
+NODE_ENV=development
+```
+
+## Available Scripts
+
+```shellscript
+# Development
+npm run dev         # Start development server
+npm run build      # Build production application
+npm run start      # Start production server
+npm run lint       # Run ESLint
+npm run type-check # Run TypeScript compiler check
+
+# Docker Commands
+make run          # Start Docker containers
+make stop         # Stop Docker containers
+make watch_logs   # View Docker logs
+```
+
+## Project Structure
+
+```plaintext
+paynah/
+├── app/                  # Next.js 13 app directory
+├── components/          # React components
+├── contexts/           # React contexts
+├── lib/                # Utility functions
+├── public/            # Static assets
+├── styles/           # Global styles
+├── types/           # TypeScript types
+└── docker/         # Docker configuration
+```
+
+## Features
+
+- 🔐 Secure Authentication
+- 💳 Account Management
+- 💸 Transaction Tracking
+- 📊 Financial Dashboard
+- 🌐 Multi-language Support
+- 🎨 Responsive Design
+
+
+## Live Demo
+
+Visit [https://paynah.ibrahimcode.dev/](https://paynah.ibrahimcode.dev/) to see the application in action.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+## Troubleshooting
+
+### Common Issues
+
+1. **MongoDB Connection Issues**
+
+1. Verify your MongoDB URI in the `.env` file
+2. Ensure MongoDB is running
+3. Check network connectivity
+
+
+
+2. **Docker Issues**
+
+1. Ensure Docker daemon is running
+2. Check if ports are available
+3. Verify Docker Compose installation
+
+
+
+3. **Build Errors**
+
+1. Clear `.next` directory
+2. Delete `node_modules` and reinstall
+3. Verify Node.js version
+
+
+
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Next.js team for the amazing framework
+- Vercel for hosting
+- All contributors who have helped shape this project
+
+
+## Support
+
+For support, email [support@paynah.com](mailto:support@paynah.com) or join our Slack channel.
+
+```plaintext
+
+Key features of this README:
+
+1. Clear installation instructions for both Docker and local development
+2. Detailed environment variable setup
+3. Database configuration with admin user creation
+4. Project structure overview
+5. Comprehensive troubleshooting section
+6. Contributing guidelines
+7. Multiple development options
+8. Clear prerequisites
+9. Common issues and solutions
+
+The README is designed to help developers get started quickly while providing all necessary information for both basic and advanced usage.
+```
