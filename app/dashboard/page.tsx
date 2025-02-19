@@ -33,21 +33,20 @@ const Dashbaord = () => {
       <DashboardHeader />
       <main className="container">
         <SerenityHeader />
-        {/* <div className="grid gap-6 md:grid-cols-[2fr,1fr]">
-          <div className="space-y-6">
-            <h1 className="text-xl font-medium text-gray-800">
-              Serenity space
-            </h1>
-            <div className="grid gap-6">
-              <AccountCard />
-              <QuickActions />
-              <RecentTransactions />
-            </div>
+        <div className="flex">
+          {/* First Col 20% */}
+          <div className="flex w-[22.5%] bg-red-400">
+            {/* Card Section */}
+
+            {/* Quick Actions */}
           </div>
-          <div className="space-y-6">
+          {/* Middle Col 60% */}
+          <div className="flex w-[55%] flex-col gap-4 bg-blue-400 ">world </div>
+          {/* Last Col 20% */}
+          <div className="flex w-[22.5%] ">
             <PointsOfSale />
           </div>
-        </div> */}
+        </div>
       </main>
       <NavigationBar />
     </div>
