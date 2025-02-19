@@ -71,7 +71,8 @@ export function LoginModal() {
       router.push("/dashbaord");
       setIsLoading(true);
     } catch (error) {
-      showAlert((error as Error).message, "error", 5000);
+      showAlert("An error occurred during sign-in", "error", 5000);
+      console.log(error);
       setAuthError(true);
     } finally {
       setLoading(false);
@@ -93,12 +94,12 @@ export function LoginModal() {
   }, [touchedFields, trigger, t]); // Removed unnecessary watchFields dependency
 
   return (
-    <div className="w-full md:max-w-[31rem]">
+    <div className="w-full max-w-[31rem]">
       <h2 className="text-2xl font-semibold text-center mb-10">
         {t("greeting")}
       </h2>
 
-      <Card className="bg-[#F9FAFB] rounded-xlg overflow-hidden mb-6 shadow-none px-0 md:px-10 border-[#D0D0D0]">
+      <Card className="bg-[#F9FAFB] rounded-xlg overflow-hidden mb-6 shadow-none px-10 border-[#D0D0D0]">
         <CardContent className="p-8 space-y-6">
           <div className="flex justify-center">
             <Image

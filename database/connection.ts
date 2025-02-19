@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb://localhost:27019/paynah?directConnection=true&serverSelectionTimeoutMS=2000";
 
 async function dbConnect() {
   // Check if already connected
@@ -18,17 +20,17 @@ async function dbConnect() {
     const connection = await mongoose.connect(MONGODB_URI);
 
     // Connection event listeners
-    mongoose.connection.on('connected', () => {
-      console.log('MongoDB connected successfully');
+    mongoose.connection.on("connected", () => {
+      console.log("MongoDB connected successfully");
     });
 
-    mongoose.connection.on('error', (err) => {
-      console.error('MongoDB connection error:', err);
+    mongoose.connection.on("error", (err) => {
+      console.error("MongoDB connection error:", err);
     });
 
     return connection;
   } catch (error) {
-    console.error('Initial MongoDB connection error:', error);
+    console.error("Initial MongoDB connection error:", error);
     throw error;
   }
 }

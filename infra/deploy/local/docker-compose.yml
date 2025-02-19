@@ -21,12 +21,14 @@ services:
       - /app/node_modules
       - /app/.next
     entrypoint: /bin/sh -c "npm install && npm run dev"
+    depends_on:
+      - mongodb
 
   mongodb:
     image: mongo:latest
     container_name: mongodb
     environment:
-      - MONGO_INITDB_DATABASE=myapp
+      - MONGO_INITDB_DATABASE=paynah
     networks:
       - app-network
     ports:

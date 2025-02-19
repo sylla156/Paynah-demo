@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { useLoader } from "../contexts/LoaderContext";
@@ -24,7 +24,7 @@ const Dashbaord = () => {
     } else {
       setIsLoading(false);
     }
-  }, [user, router]);
+  }, [user, router, setIsLoading]);
 
   return (
     <div style={{ minHeight: "[100dvh]" }} className="bg-[#F8F9FB]">

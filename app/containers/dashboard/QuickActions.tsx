@@ -16,14 +16,14 @@ export function QuickActions() {
     <Card className="w-full">
       <CardHeader className="py-2 px-4">
         <CardTitle className="text-lg font-medium m-0 p-0">
-          Opérations rapides
+          Op&rsquo;erations rapides
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-5 px-3">
         <Tabs defaultValue="recharge" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-zinc-100 p-1 h-8">
             <TabsTrigger style={{ fontSize: "0.6rem" }} value="recharge">
-              Envoi d’argent
+              Envoi d&rsquo;argent
             </TabsTrigger>
             <TabsTrigger style={{ fontSize: "0.6rem" }} value="envoi">
               Paiement
@@ -73,14 +73,14 @@ export function QuickActions() {
 
         <div className="space-y-3">
           <div className="space-y-1">
-            <label className="text-xs font-medium">Pays opérateur</label>
+            <label className="text-xs font-medium">Pays op&rsquo;rateur</label>
             <Select defaultValue="ci">
               <SelectTrigger className="w-full h-9">
-                <SelectValue placeholder="Sélectionner un pays" />
+                <SelectValue placeholder="S&rsquo;lectionner un pays" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="ci" style={{ fontSize: "0.6rem" }}>
-                  🇨🇮 Côte d'Ivoire
+                  &nbsp; C&ocirc;te d&rsquo;Ivoire
                 </SelectItem>
               </SelectContent>
             </Select>
@@ -92,26 +92,20 @@ export function QuickActions() {
                 className="text-xs font-medium"
                 style={{ fontSize: "0.6rem" }}
               >
-                Opérateur
+                Op&rsquo;rateur
               </label>
               <Select defaultValue="operator1">
                 <SelectTrigger className="h-9">
                   <SelectValue
-                    placeholder="Sélectionner un opérateur"
+                    placeholder="S&rsquo;lectionner un op&rsquo;rateur"
                     style={{ fontSize: "0.6rem" }}
                   />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem
-                    value="operator1"
-                    style={{ fontSize: "0.6rem" }}
-                  >
+                  <SelectItem value="operator1" style={{ fontSize: "0.6rem" }}>
                     Orange
                   </SelectItem>
-                  <SelectItem
-                    value="operator2"
-                    style={{ fontSize: "0.6rem" }}
-                  >
+                  <SelectItem value="operator2" style={{ fontSize: "0.6rem" }}>
                     MTN
                   </SelectItem>
                 </SelectContent>
@@ -123,10 +117,10 @@ export function QuickActions() {
                 className="text-xs font-medium"
                 style={{ fontSize: "0.6rem" }}
               >
-                Numéro de compte
+                Num&rsquo;ro de compte
               </label>
               <Input
-                placeholder="Entrez le numéro de compte"
+                placeholder="Entrez le num&rsquo;ro de compte"
                 className="h-9"
                 style={{ fontSize: "0.6rem" }}
               />
@@ -134,7 +128,10 @@ export function QuickActions() {
           </div>
         </div>
 
-        <Button className="w-full h-9 text-sm font-medium rounded-full bg-black hover:bg-black/90">
+        <Button
+          className="w-full h-9 text-sm font-medium rounded-full bg-black hover:bg-black/90"
+          style={{ fontSize: "0.6rem" }}
+        >
           Initier le rechargement
         </Button>
       </CardContent>
