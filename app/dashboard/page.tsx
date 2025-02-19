@@ -11,6 +11,7 @@ import { NavigationBar } from "../containers/dashboard/NavigationBar";
 import { SerenityHeader } from "../containers/dashboard/SerenityHeader";
 import { AccountCard } from "../containers/dashboard/AccountCard";
 import { QuickActions } from "../containers/dashboard/QuickActions";
+import { AccountCards } from "../containers/dashboard/AccountCards";
 
 const Dashbaord = () => {
   const { user } = useAuth();
@@ -33,13 +34,16 @@ const Dashbaord = () => {
       <DashboardHeader />
       <main className="container">
         <SerenityHeader />
-        <div className="flex">
-          <div className="flex w-[22.5%] flex-col gap-y-3 justify-between items-center">
+        <div className="flex gap-x-3">
+          <div className="flex w-[22.5%] flex-col gap-y-3 justify-start items-center">
             <AccountCard />
             <QuickActions />
           </div>
           {/* Middle Col 60% */}
-          <div className="flex w-[55%] flex-col gap-4"> </div>
+          <div className="flex w-[55%] flex-col gap-4">
+            <AccountCards />
+            <RecentTransactions />
+          </div>
           <div className="flex w-[22.5%] ">
             <PointsOfSale />
           </div>
