@@ -38,6 +38,12 @@ const translations: TranslationsType = {
     passwordRequired: "🔒 Password, please!",
     passwordMinLength:
       "🔑 Password should be at least {length} characters long!",
+
+    support_title: "Serenity space",
+    support_placeholder: "Do you have any concerns?",
+    support_message_placeholder: "Write your message",
+    support_send: "Send",
+    support_expand: "Show more options",
   },
   fr: {
     copyRightFirst: "Copyright © 2023 Paynah. Tous droits réservés",
@@ -56,6 +62,13 @@ const translations: TranslationsType = {
     passwordRequired: "🔒 Veuillez renseigner votre mot de passe!",
     passwordMinLength:
       "🔑 Votre mot de passe doit contenir au moins {length} caractères!",
+
+    // Support/Serenity
+    support_title: "Serenity space",
+    support_placeholder: "Avez-vous des préoccupations ?",
+    support_message_placeholder: "Écrivez votre message",
+    support_send: "Envoyer",
+    support_expand: "Afficher plus d'options",
   },
 };
 

@@ -10,6 +10,7 @@ import { QuickActions } from "../containers/dashboard/QuickActions";
 import { RecentTransactions } from "../containers/dashboard/RecentTransactions";
 import { PointsOfSale } from "../containers/dashboard/PointsOfSale";
 import { NavigationBar } from "../containers/dashboard/NavigationBar";
+import { SerenityHeader } from "../containers/dashboard/SerenityHeader";
 
 const Dashbaord = () => {
   const { user } = useAuth();
@@ -27,8 +28,9 @@ const Dashbaord = () => {
   return (
     <div style={{ minHeight: "calc(100dvh - 2rem)" }} className="bg-[#F8F9FB] pb-2">
       <DashboardHeader />
-      {/* <main className="container px-4 py-6">
-        <div className="grid gap-6 md:grid-cols-[2fr,1fr]">
+      <main className="container px-4 py-6">
+        <SerenityHeader/>
+        {/* <div className="grid gap-6 md:grid-cols-[2fr,1fr]">
           <div className="space-y-6">
             <h1 className="text-xl font-medium text-gray-800">
               Serenity space
@@ -42,8 +44,8 @@ const Dashbaord = () => {
           <div className="space-y-6">
             <PointsOfSale />
           </div>
-        </div>
-      </main> */}
+        </div> */}
+      </main>
       <NavigationBar />
     </div>
   );
