@@ -64,14 +64,10 @@ const accounts = [
 
 export function AccountCards() {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 mt-3 lg:mt-0 md:grid-cols-3 gap-4">
       <NewAccountCard />
       {accounts.map((account, index) => (
-        <AccountCard
-          key={index}
-          title={account.title}
-          balance={account.balance}
-        />
+        <AccountCard key={index} title={account.title} balance={account.balance} />
       ))}
     </div>
   );

@@ -71,7 +71,7 @@ const pointsOfSale: PointOfSale[] = [
 
 export function PointsOfSale() {
   return (
-    <Card className="border-0 shadow-none w-full">
+    <Card className="border-0 shadow-none w-full mt-3 lg:mt-0">
       <CardHeader className="flex flex-row items-center justify-between pb-6">
         <CardTitle className="text-lg font-medium">Points de vente</CardTitle>
         <button

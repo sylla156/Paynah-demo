@@ -27,24 +27,20 @@ const Dashbaord = () => {
   }, [user, router]);
 
   return (
-    <div
-      style={{ minHeight: "[100dvh]" }}
-      className="bg-[#F8F9FB]"
-    >
+    <div style={{ minHeight: "[100dvh]" }} className="bg-[#F8F9FB]">
       <DashboardHeader />
       <main className="container">
         <SerenityHeader />
-        <div className="flex gap-x-3">
-          <div className="flex w-[22.5%] flex-col gap-y-3 justify-start items-center">
+        <div className="flex flex-col lg:flex-row gap-x-3">
+          <div className="flex w-full lg:w-[22.5%] flex-col gap-y-3 justify-start items-center">
             <AccountCard />
             <QuickActions />
           </div>
-          {/* Middle Col 60% */}
-          <div className="flex w-[55%] flex-col gap-4">
+          <div className="flex w-full lg:w-[55%] flex-col gap-4">
             <AccountCards />
             <RecentTransactions />
           </div>
-          <div className="flex w-[22.5%] ">
+          <div className="flex w-full lg:w-[22.5%]">
             <PointsOfSale />
           </div>
         </div>

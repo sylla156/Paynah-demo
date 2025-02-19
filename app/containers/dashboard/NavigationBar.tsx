@@ -83,7 +83,7 @@ export function NavigationBar() {
   };
 
   return (
-    <div className="container  bg-[#F8F9FB] mt-3">
+    <div className="container  bg-[#F8F9FB] mt-3 hidden lg:block">
       <div className="flex h-16 items-center justify-between px-4 bg-white rounded-xl">
         <div className="flex items-center gap-2">
           <Image
