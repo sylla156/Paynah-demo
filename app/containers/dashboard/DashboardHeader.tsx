@@ -7,7 +7,7 @@ import { BalanceDisplay } from "../../components/balanceDisplay";
 export function DashboardHeader() {
   return (
     <header className="border-b bg-white">
-      <div className="container flex items-center justify-between py-2">
+      <div className="container flex items-center justify-between py-1">
         <Image
           width={44}
           height={44}

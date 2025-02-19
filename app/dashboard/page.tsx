@@ -28,8 +28,8 @@ const Dashbaord = () => {
 
   return (
     <div
-      style={{ minHeight: "calc(100dvh - 2rem)" }}
-      className="bg-[#F8F9FB] pb-2"
+      style={{ minHeight: "[100dvh]" }}
+      className="bg-[#F8F9FB]"
     >
       <DashboardHeader />
       <main className="container">

@@ -98,7 +98,7 @@ export function LoginModal() {
         {t("greeting")}
       </h2>
 
-      <Card className="bg-white rounded-xlg overflow-hidden mb-6 shadow-none px-10">
+      <Card className="bg-[#F9FAFB] rounded-xlg overflow-hidden mb-6 shadow-none px-10 border-[#D0D0D0]">
         <CardContent className="p-8 space-y-6">
           <div className="flex justify-center">
             <Image
@@ -121,7 +121,7 @@ export function LoginModal() {
                   {...register("email")}
                   placeholder={t("emailPlaceholder")}
                   className={cn(
-                    "h-12 bg-[#F5F5F5] border-0 rounded-xl px-4 placeholder:text-[#626262] focus-visible:ring-0 focus-visible:ring-offset-0",
+                    "h-12 bg-[#F0F0F0] border-0 rounded-xl px-4 placeholder:text-[#626262] focus-visible:ring-0 focus-visible:ring-offset-0",
                     touchedFields.email &&
                       errors.email &&
                       "border-2 border-[#E95D5D]"
@@ -169,7 +169,7 @@ export function LoginModal() {
             <Button
               className={cn("w-full h-12 rounded-full font-normal", {
                 "bg-[#000]": isValid && !loading,
-                "bg-[#9D9D9D]": !isValid || loading,
+                "bg-[#9B9B9B]": !isValid || loading,
               })}
               type="submit"
               disabled={!isValid || loading}

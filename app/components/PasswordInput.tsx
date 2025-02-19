@@ -32,7 +32,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         <Input
           type={showPassword ? "text" : "password"}
           className={cn(
-            "h-12 w-full bg-[#F5F5F5] border-0 rounded-xl px-4 pr-12",
+            "h-12 w-full bg-[#F0F0F0] border-0 rounded-xl px-4 pr-12",
             "placeholder:text-[#626262]",
             "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:bg-[#ECECEC]",
             "transition-colors duration-200",

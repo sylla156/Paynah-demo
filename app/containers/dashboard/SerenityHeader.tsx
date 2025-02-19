@@ -9,7 +9,7 @@ export function SerenityHeader() {
   const { t } = useLanguage();
 
   return (
-    <div className="relative py-4">
+    <div className="relative py-2">
       <div className="w-full flex items-center justify-between">
         <p className="relative bg-[#F8F9FB] text-md text-[#767676]">
           {t("support_title")}
