@@ -24,8 +24,12 @@ export function PointOfSaleItem({
         className="h-8 w-8"
       />
       <div className="flex-1">
-        <p className="text-sm text-gray-900">{name}</p>
-        <p className="text-xs text-[#BABABA]">{reference}</p>
+        <p className="text-sm text-gray-900" style={{ fontSize: "0.9rem" }}>
+          {name}
+        </p>
+        <p className="text-xs text-[#BABABA]" style={{ fontSize: "0.6rem" }}>
+          {reference}
+        </p>
       </div>
       <span
         className={cn(
@@ -34,6 +38,7 @@ export function PointOfSaleItem({
             ? "bg-[#E6FFF6] text-[#00C66F]"
             : "bg-[#EBEBEB] text-[#707070]"
         )}
+        style={{ fontSize: "0.6rem" }}
       >
         {status}
       </span>

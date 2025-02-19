@@ -39,7 +39,7 @@ const Dashbaord = () => {
             <QuickActions />
           </div>
           {/* Middle Col 60% */}
-          <div className="flex w-[55%] flex-col gap-4 bg-blue-400 ">world </div>
+          <div className="flex w-[55%] flex-col gap-4"> </div>
           <div className="flex w-[22.5%] ">
             <PointsOfSale />
           </div>

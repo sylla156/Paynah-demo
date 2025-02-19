@@ -17,7 +17,7 @@ export function SerenityHeader() {
 
         <div className="relative flex items-center justify-end">
           <div className="group relative flex justify-between min-w-[720px] items-center bg-white px-4 py-1 rounded-md">
-            <p className="text-sm w-[40%]">
+            <p className="text-sm w-[40%]" >
               {t("support_placeholder")}
             </p>
             <div className="flex items-center w-[60%] gap-x-1">

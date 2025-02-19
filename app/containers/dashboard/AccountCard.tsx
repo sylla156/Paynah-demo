@@ -9,23 +9,42 @@ export function AccountCard() {
           <div className="flex items-start gap-x-2">
             <div>
               <div className="text-sm font-medium">Compte principal</div>
-              <div className="text-xs text-[#AFAFAF]">PA48391CI</div>
+              <div
+                className="text-xs text-[#AFAFAF]"
+                style={{ fontSize: "0.6rem" }}
+              >
+                PA48391CI
+              </div>
             </div>
             <div
               className="flex items-start gap-1 rounded-full bg-[#2E2E2E] px-2 py-1 text-sm text-[#D0D0D0] backdrop-blur-sm"
-              style={{ fontSize: "0.7rem" }}
+              style={{ fontSize: "0.6rem" }}
             >
               <span>Franc CFA</span>
               <span>▼</span>
             </div>
           </div>
-          <Lock color="white" className="h-4 w-4" />
+          <Lock color="white" className="h-3 w-3" />
         </div>
         <div>
-            <div className="text-sm text-[#AFAFAF]">Solde</div>
-          <div className="text-md font-semibold">7 873 456 XOF</div>
-            <div className="text-sm text-[#AFAFAF]">Solde disponible</div>
-          <div className="text-md font-semibold">6 873 456 XOF</div>
+          <div
+            className="text-sm text-[#AFAFAF]"
+            style={{ fontSize: "0.6rem" }}
+          >
+            Solde
+          </div>
+          <div className="text-md font-semibold" style={{ fontSize: "0.9rem" }}>
+            7 873 456 XOF
+          </div>
+          <div
+            className="text-sm text-[#AFAFAF]"
+            style={{ fontSize: "0.6rem" }}
+          >
+            Solde disponible
+          </div>
+          <div className="text-md font-semibold" style={{ fontSize: "0.9rem" }}>
+            6 873 456 XOF
+          </div>
         </div>
       </div>
     </div>

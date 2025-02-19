@@ -67,7 +67,6 @@ const pointsOfSale: PointOfSale[] = [
     status: "Actif",
     icon: "tpe",
   },
-  
 ];
 
 export function PointsOfSale() {
@@ -75,7 +74,10 @@ export function PointsOfSale() {
     <Card className="border-0 shadow-none w-full">
       <CardHeader className="flex flex-row items-center justify-between pb-6">
         <CardTitle className="text-lg font-medium">Points de vente</CardTitle>
-        <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
+        <button
+          className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700"
+          style={{ fontSize: "0.7rem" }}
+        >
           Voir tout
           <ChevronRight className="h-4 w-4" />
         </button>
