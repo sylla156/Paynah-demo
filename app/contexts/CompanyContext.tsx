@@ -14,7 +14,7 @@ export const companies: Company[] = [
     id: "1",
     name: "Total Energie CI",
     code: "Npq487738CI",
-    logo: "/icons/totalEnergies.svg",
+    logo: "/icons/energies.svg",
   },
   {
     id: "2",

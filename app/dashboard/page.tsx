@@ -27,7 +27,7 @@ const Dashbaord = () => {
   }, [user, router, setIsLoading]);
 
   return (
-    <div style={{ minHeight: "[100dvh]" }} className="bg-[#F8F9FB]">
+    <div className="bg-[#F8F9FB] flex flex-col w-full justify-between items-center" style={{ minHeight: 'calc(100vh - 5vh)' }}>
       <DashboardHeader />
       <main className="container">
         <SerenityHeader />
