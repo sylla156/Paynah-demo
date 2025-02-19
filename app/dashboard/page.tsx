@@ -5,12 +5,12 @@ import { useAuth } from "../contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import { useLoader } from "../contexts/LoaderContext";
 import { DashboardHeader } from "../containers/dashboard/DashboardHeader";
-import { AccountCard } from "../containers/dashboard/AccountCard";
 import { QuickActions } from "../containers/dashboard/QuickActions";
 import { RecentTransactions } from "../containers/dashboard/RecentTransactions";
 import { PointsOfSale } from "../containers/dashboard/PointsOfSale";
 import { NavigationBar } from "../containers/dashboard/NavigationBar";
 import { SerenityHeader } from "../containers/dashboard/SerenityHeader";
+import { AccountCard } from "../containers/dashboard/AccountCard";
 
 const Dashbaord = () => {
   const { user } = useAuth();
@@ -35,10 +35,11 @@ const Dashbaord = () => {
         <SerenityHeader />
         <div className="flex">
           {/* First Col 20% */}
-          <div className="flex w-[22.5%] bg-red-400">
+          <div className="flex w-[22.5%] flex-col justify-between items-center bg-red-400">
             {/* Card Section */}
-
+            <AccountCard />
             {/* Quick Actions */}
+            {/* <QuickActions /> */}
           </div>
           {/* Middle Col 60% */}
           <div className="flex w-[55%] flex-col gap-4 bg-blue-400 ">world </div>
