@@ -22,7 +22,7 @@ export function CompanySelector() {
         }
       }}
     >
-      <SelectTrigger className="flex w-auto items-center justify-between gap-3 rounded-xl py-7 bg-gray-100 border-[#e4e1e1]">
+      <SelectTrigger className="flex w-full md:w-auto mb-2 md:mb-0 items-center justify-between gap-3 rounded-xl py-7 bg-gray-100 border-[#e4e1e1]">
         <div className="flex items-center justify-between gap-4 w-full">
           <div className=" flex justify-center items-center bg-white min-w-[53px] min-h-[45px] rounded-xl border-[#e4e1e1]">
             <Image
