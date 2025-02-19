@@ -83,7 +83,7 @@ export function NavigationBar() {
   };
 
   return (
-    <div className="container fixed bottom-10 left-0 right-0  bg-[#F8F9FB]">
+    <div className="container  bg-[#F8F9FB] mt-3">
       <div className="flex h-16 items-center justify-between px-4 bg-white rounded-xl">
         <div className="flex items-center gap-2">
           <Image
@@ -108,7 +108,7 @@ export function NavigationBar() {
           <Button
             onClick={handleSettingsClick}
             className="rounded-full p-2 text-gray-500 hover:bg-gray-100"
-            variant={'ghost'}
+            variant={"ghost"}
           >
             <Settings className="h-5 w-5" />
             <span className="sr-only">Settings</span>
