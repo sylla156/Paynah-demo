@@ -1,6 +1,18 @@
-"use client"
+"use client";
 
-import { Settings, User, Bell, Shield, CreditCard, HelpCircle, LogOut } from "lucide-react"
+import { useAuth } from "@/app/contexts/AuthContext";
+import { useLoader } from "@/app/contexts/LoaderContext";
+import { useModal } from "@/app/contexts/ModalContext";
+import {
+  Settings,
+  User,
+  Bell,
+  Shield,
+  CreditCard,
+  HelpCircle,
+  LogOut,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const settingsItems = [
   {
@@ -28,9 +40,21 @@ const settingsItems = [
     label: "Aide",
     description: "Centre d'aide et support",
   },
-]
+];
 
 export function UserSettings() {
+  const { signOut } = useAuth();
+  const { closeModal } = useModal();
+  const { setIsLoading } = useLoader();
+
+  const router = useRouter();
+
+  const handleLogout = () => {
+    closeModal();
+    setIsLoading(true);
+    signOut();
+    router.push("/signin");
+  };
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
@@ -50,12 +74,14 @@ export function UserSettings() {
             </div>
           </button>
         ))}
-        <button className="flex w-full items-center gap-4 rounded-lg p-3 text-left text-red-600 transition-colors hover:bg-red-50">
+        <button
+          onClick={handleLogout}
+          className="flex w-full items-center gap-4 rounded-lg p-3 text-left text-red-600 transition-colors hover:bg-red-50"
+        >
           <LogOut className="h-6 w-6" />
           <div className="font-medium">Déconnexion</div>
         </button>
       </div>
     </div>
-  )
+  );
 }
-

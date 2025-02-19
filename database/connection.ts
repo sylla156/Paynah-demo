@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 
 const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb://localhost:27019/paynah?directConnection=true&serverSelectionTimeoutMS=2000";
+  process.env.MONGODB_URI
 
 async function dbConnect() {
   // Check if already connected
