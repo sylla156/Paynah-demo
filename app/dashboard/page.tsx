@@ -26,10 +26,13 @@ const Dashbaord = () => {
   }, [user, router]);
 
   return (
-    <div style={{ minHeight: "calc(100dvh - 2rem)" }} className="bg-[#F8F9FB] pb-2">
+    <div
+      style={{ minHeight: "calc(100dvh - 2rem)" }}
+      className="bg-[#F8F9FB] pb-2"
+    >
       <DashboardHeader />
-      <main className="container px-4 py-6">
-        <SerenityHeader/>
+      <main className="container">
+        <SerenityHeader />
         {/* <div className="grid gap-6 md:grid-cols-[2fr,1fr]">
           <div className="space-y-6">
             <h1 className="text-xl font-medium text-gray-800">
