@@ -21,7 +21,7 @@ export function QuickActions() {
       </CardHeader>
       <CardContent className="space-y-5 px-3">
         <Tabs defaultValue="recharge" className="w-full">
-          <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 bg-zinc-100 p-1 h-8">
+          <TabsList className="grid w-full grid-cols-3 bg-zinc-100 p-1 h-8">
             <TabsTrigger style={{ fontSize: "0.6rem" }} value="recharge">
               Envoi d’argent
             </TabsTrigger>
@@ -33,7 +33,7 @@ export function QuickActions() {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="recharge">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
+            <div className="grid grid-cols-3 gap-4 mt-2">
               <div className="flex flex-col items-center gap-1">
                 <div className="w-10 h-10 rounded-xl border-2 border-black flex items-center justify-center">
                   <Smartphone className="w-5 h-5" />
@@ -86,7 +86,7 @@ export function QuickActions() {
             </Select>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4">
+          <div className="grid grid-cols-[1fr_2fr] gap-4">
             <div className="space-y-1">
               <label
                 className="text-xs font-medium"
