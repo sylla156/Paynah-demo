@@ -21,7 +21,7 @@ export default function SignIn() {
   }, [user, router]);
 
   return (
-    <div className="relative flex items-center justify-center px-16 py-10 h-screen w-screen  bg-no-repeat  bg-[url('/images/bg.svg')] bg-cover bg-center bg-[padding-box]">
+    <div className="relative flex items-center justify-center px-10 md:px-16 py-10 h-screen w-screen  bg-no-repeat  bg-[url('/images/bg.svg')] bg-cover bg-center bg-[padding-box]">
       <SignHeader />
       <LoginModal />
       <SignFooter />
